@@ -10,7 +10,7 @@ function findMaxConsecutiveOnes(nums) {
 
   validate.Array.isArray(nums, "nums");
   validateRange.Array.isNotEmpty(nums, "nums");
-  validateRange.Array.containsOnlyNumbers(nums, "nums");
+  validateRange.Array.numbers.containsOnlyNumbers(nums, "nums");
   validateRange.Array.containsOnlySpecifiedValues(nums, "nums", [0, 1]);
   validateRange.Array.maxItems(nums, "nums", 10000);
 

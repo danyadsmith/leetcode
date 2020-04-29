@@ -42,18 +42,18 @@ describe("[Helper Function Unit Tests]", () => {
     });
     describe("#Array.containsOnlyNumbers()", () => {
       it("should return true when the Array contains only numbers", () => {
-        expect(validateRange.Array.containsOnlyNumbers([1, 2, 3], "array")).to.be.true;
-        expect(validateRange.Array.containsOnlyNumbers([1, 2, 3, 0, -1, -2, -3, 0.5, 2.3425], "array")).to.be.true;
+        expect(validateRange.Array.numbers.containsOnlyNumbers([1, 2, 3], "array")).to.be.true;
+        expect(validateRange.Array.numbers.containsOnlyNumbers([1, 2, 3, 0, -1, -2, -3, 0.5, 2.3425], "array")).to.be.true;
       });
       it("should throw an exception when there are non-numeric values in the array", () => {
         expect(function () {
-          validateRange.Array.containsOnlyNumbers([1, "string"], "array")
+          validateRange.Array.numbers.containsOnlyNumbers([1, "string"], "array")
         }).to.throw(/The array Array should only contain numbers./);
         expect(function () {
-          validateRange.Array.containsOnlyNumbers([1, {}], "array")
+          validateRange.Array.numbers.containsOnlyNumbers([1, {}], "array")
         }).to.throw(/The array Array should only contain numbers./);
         expect(function () {
-          validateRange.Array.containsOnlyNumbers([1, false, null, undefined, 2, 3, 4, [], 0, -1], "array")
+          validateRange.Array.numbers.containsOnlyNumbers([1, false, null, undefined, 2, 3, 4, [], 0, -1], "array")
         }).to.throw(/The array Array should only contain numbers./);
       });
     });
@@ -85,6 +85,34 @@ describe("[Helper Function Unit Tests]", () => {
         expect(function () {
           validateRange.Array.maxItems(["x", "y"], "array", 1)
         }).to.throw(/The array Array cannot contain more than 1 items./);
+      });
+    });
+    describe("#Array.numeric.isSortedAsc()", () => {
+      it("should return true when Array items are sorted in ascending order", () => {
+        expect(validateRange.Array.numbers.isSortedAsc([1, 2, 3, 4, 5], "array")).to.be.true;
+        expect(validateRange.Array.numbers.isSortedAsc([-5, 0, 1, 1.5, 2, 3, 4, 5], "array")).to.be.true;
+      });
+      it("should throw an exception when Array items are not sorted in ascending order", () => {
+        expect(function () {
+          validateRange.Array.numbers.isSortedAsc([5, 4, 3, 2, 1], "array")
+        }).to.throw(/The array Array must be sorted in ascending order./);
+        expect(function () {
+          validateRange.Array.numbers.isSortedAsc([-5, 5, 4, 3, 2, 1], "array")
+        }).to.throw(/The array Array must be sorted in ascending order./);
+      });
+    });
+    describe("#Array.numeric.isSortedDesc()", () => {
+      it("should return true when Array items are sorted in descending order", () => {
+        expect(validateRange.Array.numbers.isSortedDesc([5, 4, 3, 2, 1], "array")).to.be.true;
+        expect(validateRange.Array.numbers.isSortedDesc([3, 2, 1, 0, -1, -2, -3], "array")).to.be.true;
+      });
+      it("should throw an exception when Array items are not sorted in descending order", () => {
+        expect(function () {
+          validateRange.Array.numbers.isSortedDesc([1, 2, 4], "array")
+        }).to.throw(/The array Array must be sorted in descending order./);
+        expect(function () {
+          validateRange.Array.numbers.isSortedDesc([-5, 5, 4, 3, 2, 1], "array")
+        }).to.throw(/The array Array must be sorted in descending order./);
       });
     });
   });

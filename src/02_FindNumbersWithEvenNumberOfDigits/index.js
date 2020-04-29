@@ -8,7 +8,7 @@ function findNumbers(nums) {
   let countOfNumbersWithEvenDigits = 0;
 
   validate.Array.isArray(nums, "nums");
-  validateRange.Array.containsOnlyNumbers(nums, "nums");
+  validateRange.Array.numbers.containsOnlyNumbers(nums, "nums");
 
   nums.forEach(item => {
     if (item.toString().length % 2 === 0) {
