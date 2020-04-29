@@ -1,0 +1,18 @@
+{
+  "name": "leetcode-challenges",
+  "author": "Danya D. Smith",
+  "version": "1.0.0",
+  "description": "Solutions and tests for LeetCode challenges.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/danyadsmith/leetcode.git"
+  },
+  "scripts": {
+    "test": "mocha spec/* --reporter spec --no-deprecation --full-trace"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}
