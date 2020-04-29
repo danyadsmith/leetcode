@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 
-describe('[CANARY TEST]', function () {
-  describe('Mocha/Chai Test Environment', function () {
+describe('[Canary Test]', function () {
+  describe('Mocha/Chai Test Suite', function () {
     it('runs', function () {
       expect(false).to.equal(false);
     });
